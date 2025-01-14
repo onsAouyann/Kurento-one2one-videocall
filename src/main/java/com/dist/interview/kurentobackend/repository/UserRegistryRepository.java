@@ -1,13 +1,14 @@
-package com.dist.interview.kurentobackend;
+package com.dist.interview.kurentobackend.repository;
 
 import java.util.concurrent.ConcurrentHashMap;
-
+import org.springframework.stereotype.Repository;
 import org.springframework.web.socket.WebSocketSession;
+import com.dist.interview.kurentobackend.model.UserSession;
 
-public class UserRegistry {
-
-    private ConcurrentHashMap<String, UserSession> usersByName = new ConcurrentHashMap<>();
-    private ConcurrentHashMap<String, UserSession> usersBySessionId = new ConcurrentHashMap<>();
+@Repository
+public class UserRegistryRepository {
+    private final ConcurrentHashMap<String, UserSession> usersByName = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, UserSession> usersBySessionId = new ConcurrentHashMap<>();
 
     public void register(UserSession user) {
         usersByName.put(user.getName(), user);
@@ -34,5 +35,4 @@ public class UserRegistry {
         }
         return user;
     }
-
 }

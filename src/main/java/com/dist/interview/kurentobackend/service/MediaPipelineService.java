@@ -1,17 +1,17 @@
-package com.dist.interview.kurentobackend;
+package com.dist.interview.kurentobackend.service;
 
 import org.kurento.client.KurentoClient;
 import org.kurento.client.MediaPipeline;
 import org.kurento.client.WebRtcEndpoint;
+import org.springframework.stereotype.Service;
 
-
-public class CallMediaPipeline {
-
+@Service
+public class MediaPipelineService {
     private MediaPipeline pipeline;
     private WebRtcEndpoint callerWebRtcEp;
     private WebRtcEndpoint calleeWebRtcEp;
 
-    public CallMediaPipeline(KurentoClient kurento) {
+    public MediaPipelineService(KurentoClient kurento) {
         try {
             this.pipeline = kurento.createMediaPipeline();
             this.callerWebRtcEp = new WebRtcEndpoint.Builder(pipeline).build();
@@ -47,5 +47,4 @@ public class CallMediaPipeline {
     public WebRtcEndpoint getCalleeWebRtcEp() {
         return calleeWebRtcEp;
     }
-
 }

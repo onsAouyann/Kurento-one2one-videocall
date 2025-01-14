@@ -1,31 +1,26 @@
-package com.dist.interview.kurentobackend;
+package com.dist.interview.kurentobackend.model;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.kurento.client.IceCandidate;
 import org.kurento.client.WebRtcEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
-
 import com.google.gson.JsonObject;
 
-
 public class UserSession {
-
     private static final Logger log = LoggerFactory.getLogger(UserSession.class);
 
     private final String name;
     private final WebSocketSession session;
-
     private String sdpOffer;
     private String callingTo;
     private String callingFrom;
     private WebRtcEndpoint webRtcEndpoint;
-    private final List<IceCandidate> candidateList = new ArrayList<IceCandidate>();
+    private final List<IceCandidate> candidateList = new ArrayList<>();
 
     public UserSession(WebSocketSession session, String name) {
         this.session = session;
